@@ -277,30 +277,8 @@ nav.nav-bar .wrap {
   display: inline-block;
   position: relative;
   transition: color 0.25s ease;
-  cursor: pointer;
+  cursor: default;
   padding-bottom: 2px;
-}
-
-.hero h1 .word::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 5px;
-  width: 100%;
-  background: var(--yellow);
-  border-radius: 3px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.hero h1 .word.active {
-  color: var(--yellow);
-}
-
-.hero h1 .word.active::after {
-  transform: scaleX(1);
 }
 
 .hero p.lede {
@@ -322,11 +300,13 @@ nav.nav-bar .wrap {
 .canvas-frame {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(165deg, #0d0d0f 0%, #030304 65%, #000 100%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: radial-gradient(circle at 50% 40%, rgba(20, 20, 24, 0.45) 0%, rgba(10, 10, 11, 0.85) 75%, transparent 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-lg);
   padding: 22px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
 }
 
 .canvas-frame::before {
@@ -336,7 +316,7 @@ nav.nav-bar .wrap {
   left: -70%;
   width: 45%;
   height: 220%;
-  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.055), transparent);
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.04), transparent);
   transform: rotate(10deg);
   animation: frameSheen 8s ease-in-out infinite;
   pointer-events: none;

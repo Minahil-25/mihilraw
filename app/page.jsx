@@ -13,40 +13,40 @@ export default function HomePage() {
       id: 'design',
       title: 'Design',
       detail: 'A site built around how customers actually decide who to call, not a generic brochure.',
-      x: '90px',
-      y: '70px',
+      x: '16.07%',
+      y: '11.29%',
       delay: '0s'
     },
     {
       id: 'build',
       title: 'Build',
       detail: 'Hand-coded, mobile-first — since most local searches turn into a same-day visit.',
-      x: '340px',
-      y: '160px',
+      x: '60.71%',
+      y: '25.81%',
       delay: '1.1s'
     },
     {
       id: 'rank',
       title: 'Rank',
       detail: 'Local SEO wired in before launch — Google Business Profile, map pack, review flow.',
-      x: '150px',
-      y: '320px',
+      x: '26.79%',
+      y: '51.61%',
       delay: '2.2s'
     },
     {
       id: 'automate',
       title: 'Automate',
       detail: 'Missed-call text-back, booking reminders, and review requests — running on their own.',
-      x: '380px',
-      y: '420px',
+      x: '67.86%',
+      y: '67.74%',
       delay: '3.3s'
     },
     {
       id: 'live',
       title: 'Live',
       detail: 'Ships already ranking locally and already automated — not a static handoff.',
-      x: '190px',
-      y: '560px',
+      x: '33.93%',
+      y: '90.32%',
       delay: '4.4s',
       isLive: true
     }
@@ -63,34 +63,10 @@ export default function HomePage() {
           <div className="hero-copy">
             <div className="eyebrow">Websites · local SEO · AI automation for local business</div>
             <h1>
-              <span
-                className={`word ${activeStep === 'design' ? 'active' : ''}`}
-                onMouseEnter={() => handleStepHover('design')}
-                onMouseLeave={handleStepLeave}
-              >
-                Design.
-              </span>{' '}
-              <span
-                className={`word ${activeStep === 'build' ? 'active' : ''}`}
-                onMouseEnter={() => handleStepHover('build')}
-                onMouseLeave={handleStepLeave}
-              >
-                Build.
-              </span>{' '}
-              <span
-                className={`word ${activeStep === 'rank' ? 'active' : ''}`}
-                onMouseEnter={() => handleStepHover('rank')}
-                onMouseLeave={handleStepLeave}
-              >
-                Rank.
-              </span>{' '}
-              <span
-                className={`word ${activeStep === 'automate' ? 'active' : ''}`}
-                onMouseEnter={() => handleStepHover('automate')}
-                onMouseLeave={handleStepLeave}
-              >
-                Automate.
-              </span>
+              <span className="word">Design.</span>{' '}
+              <span className="word">Build.</span>{' '}
+              <span className="word">Rank.</span>{' '}
+              <span className="word">Automate.</span>
             </h1>
 
             <p className="lede">
@@ -112,13 +88,13 @@ export default function HomePage() {
               <svg viewBox="0 0 560 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
                 <path id="p1" className="connector" d="M 90,70 C 220,70 200,170 340,160" />
                 <path id="p2" className="connector" d="M 340,160 C 420,160 260,290 150,320" />
-                <path id="p3" className="connector" d="M 150,320 C 60,340 300,400 380,420" />
-                <path id="p4" className="connector" d="M 380,420 C 440,440 260,540 190,560" />
+                <path id="p3" className="connector" d="M 150,320 C 230,330 290,410 380,420" />
+                <path id="p4" className="connector" d="M 380,420 C 430,430 260,540 190,560" />
 
                 <path className="connector-pulse" pathLength="100" style={{ animationDelay: '0s' }} d="M 90,70 C 220,70 200,170 340,160" />
                 <path className="connector-pulse" pathLength="100" style={{ animationDelay: '0.8s' }} d="M 340,160 C 420,160 260,290 150,320" />
-                <path className="connector-pulse" pathLength="100" style={{ animationDelay: '1.6s' }} d="M 150,320 C 60,340 300,400 380,420" />
-                <path className="connector-pulse" pathLength="100" style={{ animationDelay: '2.4s' }} d="M 380,420 C 440,440 260,540 190,560" />
+                <path className="connector-pulse" pathLength="100" style={{ animationDelay: '1.6s' }} d="M 150,320 C 230,330 290,410 380,420" />
+                <path className="connector-pulse" pathLength="100" style={{ animationDelay: '2.4s' }} d="M 380,420 C 430,430 260,540 190,560" />
               </svg>
 
               {steps.map((s) => (
