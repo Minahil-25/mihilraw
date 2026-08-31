@@ -281,8 +281,8 @@ nav.nav-bar .wrap {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: 72px;
   align-items: center;
   background: transparent;
 }
@@ -337,6 +337,7 @@ nav.nav-bar .wrap {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  margin-left: 20px;
 }
 
 .canvas-frame::before {
@@ -1231,6 +1232,9 @@ footer .bottom a:hover {
   .hero .wrap {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+  .canvas-frame {
+    margin-left: 0;
   }
   .packages-grid {
     grid-template-columns: 1fr;
