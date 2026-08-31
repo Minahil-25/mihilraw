@@ -260,6 +260,7 @@ nav.nav-bar .wrap {
   position: relative;
   overflow: hidden;
   padding: 90px 0 60px;
+  background: transparent;
 }
 
 .hero-backdrop {
@@ -267,9 +268,7 @@ nav.nav-bar .wrap {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.75;
-  mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 95%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 95%);
+  opacity: 1;
 }
 
 .hero .wrap {
@@ -279,12 +278,20 @@ nav.nav-bar .wrap {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 56px;
   align-items: center;
+  background: transparent;
+}
+
+.hero-copy {
+  background: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
   font-size: clamp(40px, 5.2vw, 64px);
   font-weight: 800;
   line-height: 1.06;
+  background: transparent;
 }
 
 .hero h1 .word {
@@ -293,6 +300,7 @@ nav.nav-bar .wrap {
   transition: color 0.25s ease;
   cursor: default;
   padding-bottom: 2px;
+  background: transparent;
 }
 
 .hero p.lede {
@@ -301,6 +309,7 @@ nav.nav-bar .wrap {
   font-size: 17.5px;
   max-width: 500px;
   line-height: 1.65;
+  background: transparent;
 }
 
 .hero .cta-row {
@@ -308,6 +317,7 @@ nav.nav-bar .wrap {
   gap: 14px;
   flex-wrap: wrap;
   align-items: center;
+  background: transparent;
 }
 
 /* WORKFLOW CANVAS */

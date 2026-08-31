@@ -201,12 +201,13 @@ export default function ConstellationGrid({
 
           if (distSq < MAX_CONN_DIST_SQ) {
             const nDist = Math.sqrt(distSq);
-            const alpha = (1 - nDist / MAX_CONN_DIST) * (isDarkMode ? 0.22 : 0.08);
+            const baseConnAlpha = transparentBackground ? 0.35 : 0.22;
+            const alpha = (1 - nDist / MAX_CONN_DIST) * (isDarkMode ? baseConnAlpha : 0.12);
 
             // Subtle colored connection tinting between yellow and light blue
             const connColor = n.colorType === 'yellow' ? yellowAccent : lightBlueAccent;
-            ctx.strokeStyle = `rgba(${connColor}, ${alpha * 0.85})`;
-            ctx.lineWidth = 0.7;
+            ctx.strokeStyle = `rgba(${connColor}, ${alpha})`;
+            ctx.lineWidth = transparentBackground ? 0.85 : 0.7;
             ctx.beginPath();
             ctx.moveTo(n.x, n.y);
             ctx.lineTo(n2.x, n2.y);
@@ -226,11 +227,12 @@ export default function ConstellationGrid({
         const currentAccent = n.colorType === 'yellow' ? yellowAccent : lightBlueAccent;
 
         // Node base opacity pulse
-        const baseAlpha = isNear ? 0.95 : 0.28 + Math.sin(n.pulse) * 0.12;
+        const minAlpha = transparentBackground ? 0.4 : 0.28;
+        const baseAlpha = isNear ? 0.98 : minAlpha + Math.sin(n.pulse) * 0.15;
 
         ctx.fillStyle = isNear
           ? `rgba(${currentAccent}, ${baseAlpha})`
-          : `rgba(${nodeColor}, ${baseAlpha * 0.7})`;
+          : `rgba(${currentAccent}, ${baseAlpha * 0.65})`;
 
         const currentRadius = isNear
           ? n.radius * 2.2
