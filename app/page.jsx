@@ -61,7 +61,7 @@ export default function HomePage() {
       {/* HERO */}
       <header className="hero">
         <div className="hero-backdrop" aria-hidden="true">
-          <ConstellationGrid showOverlayText={false} transparentBackground={true} />
+          <ConstellationGrid showOverlayText={false} />
         </div>
         <div className="wrap">
           <div className="hero-copy">

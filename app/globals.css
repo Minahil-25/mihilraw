@@ -36,7 +36,10 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: 
+    radial-gradient(ellipse 900px 500px at 15% -5%, rgba(255, 255, 255, 0.05), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(245, 197, 24, 0.045), transparent 55%),
+    var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -258,14 +261,20 @@ nav.nav-bar .wrap {
   overflow: hidden;
   padding: 90px 0 60px;
   background: transparent;
+  width: 100%;
 }
 
 .hero-backdrop {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   pointer-events: none;
-  opacity: 1;
+  overflow: hidden;
 }
 
 .hero .wrap {
@@ -320,12 +329,33 @@ nav.nav-bar .wrap {
 /* WORKFLOW CANVAS */
 .canvas-frame {
   position: relative;
-  background: transparent;
-  border: none;
-  padding: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, rgba(20, 20, 24, 0.45) 0%, rgba(10, 10, 11, 0.85) 75%, transparent 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+.canvas-frame::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 45%;
+  height: 220%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  transform: rotate(10deg);
+  animation: frameSheen 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes frameSheen {
+  0% { left: -70%; }
+  45% { left: 130%; }
+  100% { left: 130%; }
 }
 
 .flow-wrap {
