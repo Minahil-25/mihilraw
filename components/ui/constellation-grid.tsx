@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface Node {
   x: number;
@@ -28,16 +28,6 @@ export default function ConstellationGrid({
 }: ConstellationGridProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-
-  // Sync theme preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setIsDarkMode(mediaQuery.matches);
-    const handler = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -53,10 +43,10 @@ export default function ConstellationGrid({
 
     // Mouse velocity & inertial tracking
     const mouse = {
-      x: -1000,
-      y: -1000,
-      prevX: -1000,
-      prevY: -1000,
+      x: -2000,
+      y: -2000,
+      prevX: -2000,
+      prevY: -2000,
       vx: 0,
       vy: 0,
       radius: 220,
@@ -66,7 +56,8 @@ export default function ConstellationGrid({
 
     const initNodes = (w: number, h: number) => {
       nodes = [];
-      const spacing = 48; // Crisp, balanced grid spacing
+      const spacing = 52; // Matrix grid spacing
+      // Extended boundaries to guarantee 100% full edge-to-edge coverage
       const startX = -spacing;
       const startY = -spacing;
       const endX = w + spacing * 2;
@@ -83,10 +74,10 @@ export default function ConstellationGrid({
             vy: 0,
             baseX: x,
             baseY: y,
-            radius: Math.random() * 1.3 + 1.2,
+            radius: Math.random() * 0.8 + 1.8,
             label: `${(colIdx * 7).toString(16).toUpperCase()}:${(rowIdx * 11).toString(16).toUpperCase()}`,
             pulse: Math.random() * Math.PI * 2,
-            colorType: (colIdx + rowIdx) % 3 === 0 ? 'yellow' : 'blue',
+            colorType: (colIdx + rowIdx) % 2 === 0 ? 'yellow' : 'blue',
           });
           rowIdx++;
         }
@@ -95,15 +86,23 @@ export default function ConstellationGrid({
     };
 
     const handleResize = () => {
+      if (!container || !canvas || !ctx) return;
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = Math.max(container.clientWidth || 0, window.innerWidth);
-      height = Math.max(container.clientHeight || 0, container.offsetHeight || 0, 700);
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.scale(dpr, dpr);
-      initNodes(width, height);
+      const rect = container.getBoundingClientRect();
+      const w = Math.max(rect.width || 0, window.innerWidth);
+      const h = Math.max(rect.height || 0, container.offsetHeight || 0, 700);
+
+      width = w;
+      height = h;
+
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+
+      // Set scale once per resize to prevent cumulative compound scaling
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      initNodes(w, h);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -113,8 +112,8 @@ export default function ConstellationGrid({
     };
 
     const handleMouseLeave = () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
+      mouse.x = -2000;
+      mouse.y = -2000;
     };
 
     handleResize();
@@ -146,15 +145,14 @@ export default function ConstellationGrid({
 
       const speed = Math.sqrt(mouse.vx * mouse.vx + mouse.vy * mouse.vy);
 
-      const nodeColor = isDarkMode ? '240, 240, 245' : '15, 23, 42';
-      const yellowAccent = '245, 197, 24'; // mihilraw Yellow Accent
-      const lightBlueAccent = '56, 189, 248'; // Sky Light Blue Accent
+      // Distinct Yellow (#f5c518) and Light Blue (#38bdf8) accents
+      const yellowAccent = '245, 197, 24'; // Yellow
+      const lightBlueAccent = '56, 189, 248'; // Light Blue
 
       if (transparentBackground) {
-        ctx.clearRect(0, 0, width, height);
+        ctx.clearRect(0, 0, width + 50, height + 50);
       } else {
-        const bgColor = isDarkMode ? '#0a0a0b' : '#f8fafc';
-        ctx.fillStyle = bgColor;
+        ctx.fillStyle = '#0a0a0b';
         ctx.fillRect(0, 0, width, height);
       }
 
@@ -199,7 +197,7 @@ export default function ConstellationGrid({
       }
 
       // Draw Connections (Optimized Distance Culling)
-      const MAX_CONN_DIST = 75;
+      const MAX_CONN_DIST = 80;
       const MAX_CONN_DIST_SQ = MAX_CONN_DIST * MAX_CONN_DIST;
 
       for (let i = 0; i < nodes.length; i++) {
@@ -213,13 +211,11 @@ export default function ConstellationGrid({
 
           if (distSq < MAX_CONN_DIST_SQ) {
             const nDist = Math.sqrt(distSq);
-            const baseConnAlpha = transparentBackground ? 0.35 : 0.22;
-            const alpha = (1 - nDist / MAX_CONN_DIST) * (isDarkMode ? baseConnAlpha : 0.12);
+            const alpha = (1 - nDist / MAX_CONN_DIST) * 0.38;
 
-            // Subtle colored connection tinting between yellow and light blue
             const connColor = n.colorType === 'yellow' ? yellowAccent : lightBlueAccent;
             ctx.strokeStyle = `rgba(${connColor}, ${alpha})`;
-            ctx.lineWidth = transparentBackground ? 0.85 : 0.7;
+            ctx.lineWidth = 0.9;
             ctx.beginPath();
             ctx.moveTo(n.x, n.y);
             ctx.lineTo(n2.x, n2.y);
@@ -238,36 +234,33 @@ export default function ConstellationGrid({
 
         const currentAccent = n.colorType === 'yellow' ? yellowAccent : lightBlueAccent;
 
-        // Node base opacity pulse
-        const minAlpha = transparentBackground ? 0.4 : 0.28;
-        const baseAlpha = isNear ? 0.98 : minAlpha + Math.sin(n.pulse) * 0.15;
+        // High contrast dot opacity
+        const baseAlpha = isNear ? 1.0 : 0.65 + Math.sin(n.pulse) * 0.2;
 
-        ctx.fillStyle = isNear
-          ? `rgba(${currentAccent}, ${baseAlpha})`
-          : `rgba(${currentAccent}, ${baseAlpha * 0.65})`;
+        ctx.fillStyle = `rgba(${currentAccent}, ${baseAlpha})`;
 
         const currentRadius = isNear
           ? n.radius * 2.2
           : n.radius + Math.sin(n.pulse) * 0.3;
 
         ctx.beginPath();
-        ctx.arc(n.x, n.y, Math.max(0.5, currentRadius), 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, Math.max(1, currentRadius), 0, Math.PI * 2);
         ctx.fill();
 
         // High-tech Spatial Radar Rings on active proximity
-        if (dist < 90) {
+        if (dist < 95) {
           const pulseRing = ((n.pulse * 20) % 30) + 4;
-          const ringAlpha = (1 - pulseRing / 34) * 0.45;
+          const ringAlpha = (1 - pulseRing / 34) * 0.55;
 
           ctx.strokeStyle = `rgba(${currentAccent}, ${ringAlpha})`;
-          ctx.lineWidth = 1;
+          ctx.lineWidth = 1.2;
           ctx.beginPath();
           ctx.arc(n.x, n.y, pulseRing, 0, Math.PI * 2);
           ctx.stroke();
 
           // Hex Coordinate Readout
-          ctx.font = '8px ui-monospace, SFMono-Regular, Consolas, monospace';
-          ctx.fillStyle = `rgba(${currentAccent}, 0.85)`;
+          ctx.font = '9px ui-monospace, SFMono-Regular, Consolas, monospace';
+          ctx.fillStyle = `rgba(${currentAccent}, 0.95)`;
           ctx.fillText(n.label, n.x + 10, n.y - 10);
         }
       }
@@ -284,7 +277,7 @@ export default function ConstellationGrid({
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isDarkMode]);
+  }, [transparentBackground]);
 
   return (
     <div
@@ -292,7 +285,10 @@ export default function ConstellationGrid({
       className={`relative w-full h-full ${transparentBackground ? 'min-h-0 bg-transparent' : 'min-h-[400px] bg-[#0a0a0b]'} overflow-hidden select-none ${className}`}
       style={{ isolation: 'isolate' }}
     >
-      <canvas ref={canvasRef} className={`absolute inset-0 block ${transparentBackground ? 'cursor-default' : 'cursor-crosshair'} w-full h-full`} />
+      <canvas
+        ref={canvasRef}
+        className={`absolute inset-0 block ${transparentBackground ? 'cursor-default' : 'cursor-crosshair'} w-full h-full pointer-events-none`}
+      />
 
       {showOverlayText && (
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4 pointer-events-none mix-blend-difference text-white py-20">
