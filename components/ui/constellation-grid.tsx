@@ -64,17 +64,46 @@ export default function ConstellationGrid({
 
     let nodes: Node[] = [];
 
+    const initNodes = (w: number, h: number) => {
+      nodes = [];
+      const spacing = 48; // Crisp, balanced grid spacing
+      const startX = -spacing;
+      const startY = -spacing;
+      const endX = w + spacing * 2;
+      const endY = h + spacing * 2;
+
+      let colIdx = 0;
+      for (let x = startX; x <= endX; x += spacing) {
+        let rowIdx = 0;
+        for (let y = startY; y <= endY; y += spacing) {
+          nodes.push({
+            x,
+            y,
+            vx: 0,
+            vy: 0,
+            baseX: x,
+            baseY: y,
+            radius: Math.random() * 1.3 + 1.2,
+            label: `${(colIdx * 7).toString(16).toUpperCase()}:${(rowIdx * 11).toString(16).toUpperCase()}`,
+            pulse: Math.random() * Math.PI * 2,
+            colorType: (colIdx + rowIdx) % 3 === 0 ? 'yellow' : 'blue',
+          });
+          rowIdx++;
+        }
+        colIdx++;
+      }
+    };
+
     const handleResize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const rect = container.getBoundingClientRect();
-      width = rect.width || window.innerWidth;
-      height = rect.height || window.innerHeight;
+      width = Math.max(container.clientWidth || 0, window.innerWidth);
+      height = Math.max(container.clientHeight || 0, container.offsetHeight || 0, 700);
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.scale(dpr, dpr);
-      initNodes();
+      initNodes(width, height);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -88,33 +117,16 @@ export default function ConstellationGrid({
       mouse.y = -1000;
     };
 
-    const initNodes = () => {
-      nodes = [];
-      const spacing = 55; // Tighter grid density for richer visual connections
-      const cols = Math.ceil(width / spacing) + 1;
-      const rows = Math.ceil(height / spacing) + 1;
-
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          const x = i * spacing;
-          const y = j * spacing;
-          nodes.push({
-            x,
-            y,
-            vx: 0,
-            vy: 0,
-            baseX: x,
-            baseY: y,
-            radius: Math.random() * 1.2 + 1.2,
-            label: `${(i * 7).toString(16).toUpperCase()}:${(j * 11).toString(16).toUpperCase()}`,
-            pulse: Math.random() * Math.PI * 2,
-            colorType: (i + j) % 3 === 0 ? 'yellow' : 'blue',
-          });
-        }
-      }
-    };
-
     handleResize();
+
+    const ro = new ResizeObserver(() => {
+      handleResize();
+    });
+    ro.observe(container);
+    if (container.parentElement) {
+      ro.observe(container.parentElement);
+    }
+
     window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
@@ -267,6 +279,7 @@ export default function ConstellationGrid({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      ro.disconnect();
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
