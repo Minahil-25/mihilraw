@@ -95,7 +95,7 @@ export default function WebsitesPage() {
       role: "Founder, Kestrel Clinic"
     },
     {
-      quote: "They don't just design pretty websites — they engineer an automated sales asset. Our conversion rate from Google search doubled.",
+      quote: "They don't just design pretty websites, they engineer an automated sales asset. Our conversion rate from Google search doubled.",
       name: "Dr. Julian Hayes",
       role: "Lead Dentist, Vantage Dental"
     }
@@ -221,7 +221,7 @@ export default function WebsitesPage() {
                 <ShieldAlert size={18} /> THE USUAL TEMPLATE ROUTE
               </div>
               <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '14.5px', color: 'var(--text-dim)' }}>
-                <li>❌ 4–10 second load time with heavy plugin bloat</li>
+                <li>❌ 4-10 second load time with heavy plugin bloat</li>
                 <li>❌ 65% bounce rate on mobile users trying to call you</li>
                 <li>❌ Zero custom schema markup or local SEO ranking signals</li>
                 <li>❌ Constant WordPress update breaks and plugin security vulnerabilities</li>

@@ -25,7 +25,7 @@ export default function WebAppsPage() {
           <div style={{ maxWidth: '820px' }}>
             <div className="eyebrow">Fullstack Systems &amp; MVP Engineering</div>
             <h1 style={{ fontSize: 'clamp(38px, 5vw, 62px)', fontWeight: 800, lineHeight: 1.08, marginBottom: '24px' }}>
-              We build custom web apps like <span style={{ color: 'var(--yellow)' }}>Task Earn Pro</span> — and rescue broken &quot;vibe-coded&quot; prototypes.
+              We build custom web apps like <span style={{ color: 'var(--yellow)' }}>Task Earn Pro</span>, and rescue broken &quot;vibe-coded&quot; prototypes.
             </h1>
             <p style={{ fontSize: '18px', color: 'var(--text-dim)', lineHeight: 1.65, marginBottom: '36px' }}>
               Whether you need a high-performance SaaS MVP shipped in 3 weeks, a custom internal workflow system, or emergency surgical refactoring on an AI-generated prototype that won&apos;t scale, we build software that holds up under real production traffic.

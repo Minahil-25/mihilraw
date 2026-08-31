@@ -33,8 +33,8 @@ export default function AutomationsPage() {
       howItWorks: [
         'Triggers when a job/service is marked completed in your system.',
         'Sends a non-pushy friendly SMS asking: "How was your experience with us today?"',
-        'If score is 4–5: Instantly directs them to your Google Business Profile with a 1-tap review link.',
-        'If score is 1–3: Diverts them to a private owner feedback form so you can resolve it before it harms your public rating.',
+        'If score is 4 or 5: Instantly directs them to your Google Business Profile with a 1-tap review link.',
+        'If score is 1 to 3: Diverts them to a private owner feedback form so you can resolve it before it harms your public rating.',
         'AI automatically crafts and drafts thoughtful, keyword-rich owner responses for your approval.'
       ],
       diagram: 'Job Completed → SMS Trigger → Sentiment Filter → [Google Map Review OR Private Resolution Form]'
@@ -120,7 +120,7 @@ export default function AutomationsPage() {
               Quick business automations and <span style={{ color: 'var(--yellow)' }}>AI agents</span> that save 20+ hours every week.
             </h1>
             <p style={{ fontSize: '18px', color: 'var(--text-dim)', lineHeight: 1.65, marginBottom: '36px' }}>
-              Stop doing manual data entry, playing phone tag for reviews, or spending evenings drafting quotes. We build custom autonomous agents that run client-side on n8n and modern APIs — fast to deploy, transparent, and completely owned by you.
+              Stop doing manual data entry, playing phone tag for reviews, or spending evenings drafting quotes. We build custom autonomous agents that run client-side on n8n and modern APIs: fast to deploy, transparent, and completely owned by you.
             </p>
             <div className="cta-row">
               <Link href="/contact?service=automation" className="btn btn-primary btn-lg">
@@ -305,7 +305,7 @@ export default function AutomationsPage() {
 
                   <div>
                     <div className="agent-workflow-pill">
-                      <Clock size={14} /> Deployment turnaround: 3–5 days
+                      <Clock size={14} /> Deployment turnaround: 3-5 days
                     </div>
                     <button
                       onClick={() => {

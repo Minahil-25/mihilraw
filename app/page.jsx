@@ -21,7 +21,7 @@ export default function HomePage() {
     {
       id: 'build',
       title: 'Build',
-      detail: 'Hand-coded, mobile-first — since most local searches turn into a same-day visit.',
+      detail: 'Hand-coded, mobile-first, since most local searches turn into a same-day visit.',
       x: '60.71%',
       y: '25.81%',
       delay: '1.1s'
@@ -29,7 +29,7 @@ export default function HomePage() {
     {
       id: 'rank',
       title: 'Rank',
-      detail: 'Local SEO wired in before launch — Google Business Profile, map pack, review flow.',
+      detail: 'Local SEO wired in before launch: Google Business Profile, map pack, review flow.',
       x: '26.79%',
       y: '51.61%',
       delay: '2.2s'
@@ -37,7 +37,7 @@ export default function HomePage() {
     {
       id: 'automate',
       title: 'Automate',
-      detail: 'Missed-call text-back, booking reminders, and review requests — running on their own.',
+      detail: 'Missed-call text-back, booking reminders, and review requests running on their own.',
       x: '67.86%',
       y: '67.74%',
       delay: '3.3s'
@@ -45,7 +45,7 @@ export default function HomePage() {
     {
       id: 'live',
       title: 'Live',
-      detail: 'Ships already ranking locally and already automated — not a static handoff.',
+      detail: 'Ships already ranking locally and already automated, not a static handoff.',
       x: '33.93%',
       y: '90.32%',
       delay: '4.4s',
@@ -74,7 +74,7 @@ export default function HomePage() {
             </h1>
 
             <p className="lede">
-              mihilraw builds websites for businesses the deep way — hand-coded, not templated — with local SEO wired in before launch, then AI automations that answer calls, draft quotes, and collect reviews so you don&apos;t have to.
+              mihilraw builds websites for businesses the deep way: hand-coded, not templated, with local SEO wired in before launch, then AI automations that answer calls, draft quotes, and collect reviews so you don&apos;t have to.
             </p>
 
             <div className="cta-row">
@@ -129,7 +129,7 @@ export default function HomePage() {
       {/* TRUSTED MARQUEE */}
       <section className="trusted">
         <div className="wrap">
-          <span className="cap">Building for —</span>
+          <span className="cap">Building for</span>
           <div className="marquee">
             <div className="marquee-track">
               <span>Task Earn Pro</span>
@@ -206,7 +206,7 @@ export default function HomePage() {
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow">How a project runs</div>
-            <h2>Five steps, in order — nothing skipped.</h2>
+            <h2>Five steps, in order: nothing skipped.</h2>
             <p>Every milestone is transparent, accountable, and designed to generate measurable business results.</p>
           </div>
 
@@ -214,7 +214,7 @@ export default function HomePage() {
             <div className="step-card">
               <div className="num">01</div>
               <h3>Design</h3>
-              <p>We map the pages your customers and Google both need, then design around conversion — not template trends.</p>
+              <p>We map the pages your customers and Google both need, then design around conversion, not template trends.</p>
             </div>
             <div className="step-card">
               <div className="num">02</div>
@@ -224,12 +224,12 @@ export default function HomePage() {
             <div className="step-card">
               <div className="num">03</div>
               <h3>Rank</h3>
-              <p>Google Business Profile optimized, map-pack signals in place, review flow set up — before the site goes live.</p>
+              <p>Google Business Profile optimized, map-pack signals in place, review flow set up before the site goes live.</p>
             </div>
             <div className="step-card">
               <div className="num">04</div>
               <h3>Automate</h3>
-              <p>Missed-call text-back, quoting agents, review requests — running automatically once you&apos;re live.</p>
+              <p>Missed-call text-back, quoting agents, review requests running automatically once you&apos;re live.</p>
             </div>
             <div className="step-card">
               <div className="num">05</div>
@@ -254,7 +254,7 @@ export default function HomePage() {
               <div>
                 <div className="tag">Fullstack SaaS</div>
                 <h3>Task Earn Pro</h3>
-                <p>A comprehensive CRM &amp; worker dashboard system built end-to-end — authentication, real-time queues, data models, and team views.</p>
+                <p>A comprehensive CRM &amp; worker dashboard system built end-to-end with authentication, real-time queues, data models, and team views.</p>
               </div>
               <Link href="/webapps#taskearn" className="link-arrow">
                 Read case study &rarr;
@@ -313,7 +313,7 @@ export default function HomePage() {
             <div className="review-card">
               <div>
                 <div className="stars">★★★★★</div>
-                <p>&quot;They didn&apos;t just hand us a website — Search Console was already reporting impressions in week one, and phone calls increased immediately.&quot;</p>
+                <p>&quot;They didn&apos;t just hand us a website: Search Console was already reporting impressions in week one, and phone calls increased immediately.&quot;</p>
               </div>
               <div className="who">
                 <div className="avatar">RK</div>

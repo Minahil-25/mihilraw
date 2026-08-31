@@ -23,8 +23,8 @@ function ContactForm() {
   const initialProject = searchParams.get('project') || '';
 
   const [selectedService, setSelectedService] = useState('website');
-  const [budget, setBudget] = useState('$1,500 – $3,000');
-  const [timeline, setTimeline] = useState('2 – 4 Weeks');
+  const [budget, setBudget] = useState('$1,500 - $3,000');
+  const [timeline, setTimeline] = useState('2 - 4 Weeks');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -58,15 +58,15 @@ function ContactForm() {
 
   const budgetTiers = [
     '< $1,500',
-    '$1,500 – $3,000',
-    '$3,000 – $5,000',
-    '$5,000 – $10,000+'
+    '$1,500 - $3,000',
+    '$3,000 - $5,000',
+    '$5,000 - $10,000+'
   ];
 
   const timelines = [
     'Urgent (< 1 week)',
-    '2 – 4 Weeks',
-    '1 – 2 Months',
+    '2 - 4 Weeks',
+    '1 - 2 Months',
     'Flexible'
   ];
 
