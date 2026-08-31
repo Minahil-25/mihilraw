@@ -18,11 +18,13 @@ interface Node {
 interface ConstellationGridProps {
   className?: string;
   showOverlayText?: boolean;
+  transparentBackground?: boolean;
 }
 
 export default function ConstellationGrid({
   className = '',
-  showOverlayText = true
+  showOverlayText = true,
+  transparentBackground = false
 }: ConstellationGridProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -42,7 +44,7 @@ export default function ConstellationGrid({
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext('2d', { alpha: false });
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -132,14 +134,17 @@ export default function ConstellationGrid({
 
       const speed = Math.sqrt(mouse.vx * mouse.vx + mouse.vy * mouse.vy);
 
-      // Color paletting for dark/light seamlessness with Yellow and Light Blue
-      const bgColor = isDarkMode ? '#0a0a0b' : '#f8fafc';
       const nodeColor = isDarkMode ? '240, 240, 245' : '15, 23, 42';
       const yellowAccent = '245, 197, 24'; // mihilraw Yellow Accent
       const lightBlueAccent = '56, 189, 248'; // Sky Light Blue Accent
 
-      ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, width, height);
+      if (transparentBackground) {
+        ctx.clearRect(0, 0, width, height);
+      } else {
+        const bgColor = isDarkMode ? '#0a0a0b' : '#f8fafc';
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, width, height);
+      }
 
       // Node Physics Engine (Hooke's Law Spring-Mass-Damping system)
       const SPRING_K = 18; // Spring stiffness
@@ -269,10 +274,10 @@ export default function ConstellationGrid({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full min-h-[400px] overflow-hidden select-none bg-[#0a0a0b] ${className}`}
+      className={`relative w-full h-full ${transparentBackground ? 'min-h-0 bg-transparent' : 'min-h-[400px] bg-[#0a0a0b]'} overflow-hidden select-none ${className}`}
       style={{ isolation: 'isolate' }}
     >
-      <canvas ref={canvasRef} className="absolute inset-0 block cursor-crosshair w-full h-full" />
+      <canvas ref={canvasRef} className={`absolute inset-0 block ${transparentBackground ? 'cursor-default' : 'cursor-crosshair'} w-full h-full`} />
 
       {showOverlayText && (
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4 pointer-events-none mix-blend-difference text-white py-20">

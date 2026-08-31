@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles, Check, Play, ExternalLink } from 'lucide-react';
 import PackagesSection from '@/components/PackagesSection';
+import ConstellationGrid from '@/components/ui/constellation-grid';
 
 export default function HomePage() {
   const [activeStep, setActiveStep] = useState(null);
@@ -59,6 +60,9 @@ export default function HomePage() {
     <div>
       {/* HERO */}
       <header className="hero">
+        <div className="hero-backdrop" aria-hidden="true">
+          <ConstellationGrid showOverlayText={false} transparentBackground={true} />
+        </div>
         <div className="wrap">
           <div className="hero-copy">
             <div className="eyebrow">Websites · local SEO · AI automation for local business</div>
