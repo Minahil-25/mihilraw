@@ -197,9 +197,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PACKAGES SECTION (HOMEPAGE) */}
-      <PackagesSection />
-
       {/* PROCESS */}
       <section className="process" id="process">
         <div className="wrap">
@@ -295,6 +292,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* PACKAGES SECTION (HOMEPAGE) */}
+      <PackagesSection />
 
       {/* REVIEWS */}
       <section className="reviews" id="reviews">
