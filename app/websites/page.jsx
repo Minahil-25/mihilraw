@@ -2,20 +2,22 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { 
-  Play, 
-  X, 
-  ArrowRight, 
-  CheckCircle2, 
-  Gauge, 
-  Search, 
-  Smartphone, 
-  ShieldAlert, 
-  Zap, 
+import { motion } from 'framer-motion';
+import {
+  Play,
+  X,
+  ArrowRight,
+  CheckCircle2,
+  Gauge,
+  Search,
+  Smartphone,
+  ShieldAlert,
+  Zap,
   TrendingUp,
   Clock,
   Sparkles
 } from 'lucide-react';
+import { TiltCard } from '@/components/ui/tilt-card';
 
 export default function WebsitesPage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -27,7 +29,7 @@ export default function WebsitesPage() {
       speed: '0.62s Load Time (Lighthouse 99)',
       summary: 'High-conversion local service hub with automated quote request modal, dynamic mechanic schedule sync, and 1-tap call routing.',
       before: 'WordPress site loading in 8.4s with 4 broken plugins losing mobile searchers.',
-      after: 'Sub-second custom Next.js site ranking #1 on local map pack within 28 days with +140% phone calls.'
+      after: 'Sub-second custom Next.js site ranking on local map pack within 28 days with 2X calls.'
     },
     {
       title: 'Kestrel Aesthetic Salon & Spa',
@@ -38,12 +40,12 @@ export default function WebsitesPage() {
       after: 'Hand-crafted interactive showcase resulting in 3.4x online booking completion rate.'
     },
     {
-      title: 'Vantage Dental Group',
-      tag: 'Healthcare & Patient Intake',
-      speed: '0.58s Load Time (Lighthouse 98)',
-      summary: 'HIPAA-conscious intake forms, dental insurance checker, and neighborhood geo-landing pages.',
-      before: 'Outdated static site buried on page 3 of local Google results.',
-      after: 'Clean structured data leading to 12 top-3 keyword positions across dental services.'
+      title: 'Ragon Solutions',
+      tag: 'Agency Showcase & Video Engine',
+      speed: '0.54s Load Time (Lighthouse 100)',
+      summary: 'A high-performance Next.js web application for a UGC & short-form video production agency — with silky motion-driven reeler showcases and instant consultation bookings.',
+      before: 'Generic portfolio template failing to showcase high-production video reels smoothly on mobile.',
+      after: 'Bespoke Next.js & Framer Motion experience with interactive 2-card video reeler delivering +50% inbound agency inquiries.'
     },
     {
       title: 'valorantedit.com',
@@ -51,7 +53,7 @@ export default function WebsitesPage() {
       speed: '0.69s Load Time (Lighthouse 99)',
       summary: 'High-traffic media download portal with instant preview rendering, search engine snippet indexing, and CDN edge delivery.',
       before: 'Heavy database lag causing 504 gateway timeouts on viral social spikes.',
-      after: 'Zero downtime handling 100k+ monthly visits with sub-second asset delivery.'
+      after: 'Zero downtime handling 20X monthly visits with sub-second asset delivery.'
     }
   ];
 
@@ -134,7 +136,7 @@ export default function WebsitesPage() {
       <section style={{ padding: '40px 0 80px' }}>
         <div className="wrap">
           <div className="vsl-container">
-            <div 
+            <div
               className="vsl-hero-aspect"
               onClick={() => setVideoModalOpen(true)}
               role="button"
@@ -202,7 +204,7 @@ export default function WebsitesPage() {
       </section>
 
       {/* TEMPLATE VS MIHILRAW COMPARISON */}
-      <section style={{ background: 'rgba(18,18,20,0.5)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '80px 0' }}>
+      <section style={{ background: 'rgba(18,18,20,0.5)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '80px 0', overflow: 'hidden' }}>
         <div className="wrap">
           <div className="section-head" style={{ textAlign: 'center', margin: '0 auto 48px' }}>
             <div className="eyebrow" style={{ justifyContent: 'center' }}>The Standard vs. Our Standard</div>
@@ -211,42 +213,86 @@ export default function WebsitesPage() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px' }}>
-            <div style={{
-              background: 'rgba(230, 70, 70, 0.04)',
-              border: '1px solid rgba(230, 70, 70, 0.25)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '36px 30px'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#ff6b6b', fontWeight: 700, marginBottom: '16px', fontFamily: 'var(--font-mono)' }}>
+            {/* Left Box - The Usual Template Route (Animates from Left) */}
+            <motion.div
+              initial={{ opacity: 0, x: -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                background: 'rgba(230, 70, 70, 0.04)',
+                border: '1px solid rgba(230, 70, 70, 0.25)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '36px 30px',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#ff6b6b', fontWeight: 700, marginBottom: '20px', fontFamily: 'var(--font-mono)', fontSize: '13.5px', letterSpacing: '0.04em' }}>
                 <ShieldAlert size={18} /> THE USUAL TEMPLATE ROUTE
               </div>
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '14.5px', color: 'var(--text-dim)' }}>
-                <li>❌ 4-10 second load time with heavy plugin bloat</li>
-                <li>❌ 65% bounce rate on mobile users trying to call you</li>
-                <li>❌ Zero custom schema markup or local SEO ranking signals</li>
-                <li>❌ Constant WordPress update breaks and plugin security vulnerabilities</li>
-                <li>❌ Trapped in recurring builder subscriptions and slow databases</li>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14.5px', color: 'var(--text-dim)', margin: 0 }}>
+                {[
+                  '4-10 second load time with heavy plugin bloat',
+                  '65% bounce rate on mobile users trying to call you',
+                  'Zero custom schema markup or local SEO ranking signals',
+                  'Constant WordPress update breaks and plugin security vulnerabilities',
+                  'Trapped in recurring builder subscriptions and slow databases'
+                ].map((item, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: -25 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.15 + idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ lineHeight: 1.55 }}
+                  >
+                    {item}
+                  </motion.li>
+                ))}
               </ul>
-            </div>
+            </motion.div>
 
-            <div style={{
-              background: 'rgba(245, 197, 24, 0.04)',
-              border: '1px solid var(--yellow)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '36px 30px',
-              boxShadow: '0 0 30px rgba(245, 197, 24, 0.1)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--yellow)', fontWeight: 700, marginBottom: '16px', fontFamily: 'var(--font-mono)' }}>
+            {/* Right Box - The Mihilraw Hand-Coded Route (Animates from Right) */}
+            <motion.div
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                background: 'rgba(245, 197, 24, 0.04)',
+                border: '1px solid var(--yellow)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '36px 30px',
+                boxShadow: '0 0 30px rgba(245, 197, 24, 0.1)',
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--yellow)', fontWeight: 700, marginBottom: '20px', fontFamily: 'var(--font-mono)', fontSize: '13.5px', letterSpacing: '0.04em' }}>
                 <Zap size={18} /> THE MIHILRAW HAND-CODED ROUTE
               </div>
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '14.5px', color: 'var(--text)' }}>
-                <li>✅ Sub-0.8s load times with perfect 95+ Core Web Vitals</li>
-                <li>✅ Instant click-to-call mobile triggers capturing immediate visits</li>
-                <li>✅ Deep LocalBusiness schema &amp; Google Map-pack wiring</li>
-                <li>✅ Rock-solid Next.js / HTML5 code that never breaks or gets hacked</li>
-                <li>✅ You own 100% of your source code and data assets forever</li>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14.5px', color: 'var(--text)', margin: 0 }}>
+                {[
+                  'Sub-0.8s load times with perfect 95+ Core Web Vitals',
+                  'Instant click-to-call mobile triggers capturing immediate visits',
+                  'Deep LocalBusiness schema & Google Map-pack wiring',
+                  'Rock-solid Next.js / HTML5 code that never breaks or gets hacked',
+                  'You own 100% of your source code and data assets forever'
+                ].map((item, idx) => (
+                  <motion.li
+                    key={idx}
+                    initial={{ opacity: 0, x: 25 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.15 + idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ lineHeight: 1.55 }}
+                  >
+                    {item}
+                  </motion.li>
+                ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -262,7 +308,21 @@ export default function WebsitesPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '28px' }}>
             {websiteProjects.map((proj, idx) => (
-              <div key={idx} className="port-card" style={{ gap: '18px' }}>
+              <TiltCard
+                key={idx}
+                className="port-card floating-tilt-card"
+                tiltLimit={12}
+                scale={1.02}
+                perspective={1100}
+                spotlight={true}
+                style={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '18px'
+                }}
+              >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                     <span className="tag">{proj.tag}</span>
@@ -270,11 +330,11 @@ export default function WebsitesPage() {
                   </div>
                   <h3 style={{ fontSize: '21px', margin: '8px 0 12px' }}>{proj.title}</h3>
                   <p style={{ fontSize: '14px', color: 'var(--text-dim)', marginBottom: '16px' }}>{proj.summary}</p>
-                  
+
                   <div style={{
-                    background: 'rgba(0,0,0,0.3)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '8px',
+                    background: 'rgba(0,0,0,0.35)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '10px',
                     padding: '14px',
                     fontSize: '13px',
                     display: 'flex',
@@ -295,7 +355,7 @@ export default function WebsitesPage() {
                 <Link href={`/contact?service=website&project=${encodeURIComponent(proj.title)}`} className="link-arrow">
                   Request a build like this <ArrowRight size={15} />
                 </Link>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>

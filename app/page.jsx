@@ -2,9 +2,14 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Check, Play, ExternalLink } from 'lucide-react';
+import { ArrowRight, Sparkles, Check, Play, ExternalLink, Zap, Bot, Layers } from 'lucide-react';
 import PackagesSection from '@/components/PackagesSection';
 import ConstellationGrid from '@/components/ui/constellation-grid';
+import ShinyText from '@/components/ShinyText';
+import { CircularCarousel } from '@/components/ui/circular-carousel';
+import { TiltCard } from '@/components/ui/tilt-card';
+import ProcessReeler from '@/components/ProcessReeler';
+import FounderVSL from '@/components/FounderVSL';
 
 export default function HomePage() {
   const [activeStep, setActiveStep] = useState(null);
@@ -53,6 +58,63 @@ export default function HomePage() {
     }
   ];
 
+  const reviewsData = [
+    {
+      id: '1',
+      title: 'R. Kaur',
+      tag: 'Web & Local SEO',
+      description: "They didn't just hand us a website: Search Console was already reporting impressions in week one, and phone calls increased immediately.",
+      role: 'Founder, Apex Auto Care',
+      avatar: 'RK',
+      stars: '★★★★★'
+    },
+    {
+      id: '2',
+      title: 'D. Malik',
+      tag: 'AI Quoting Bot',
+      description: 'The quoting agent alone changed our business. Prospects get an itemized PDF quote in their inbox in 45 seconds while our competitors take 2 days.',
+      role: 'Operations Director, Horizon HVAC',
+      avatar: 'DM',
+      stars: '★★★★★'
+    },
+    {
+      id: '3',
+      title: 'S. Ahmed',
+      tag: 'Code Rescue',
+      description: 'Our Cursor-generated prototype was crashing constantly. mihilraw came in, refactored the database, fixed auth, and had us production-ready in 8 days.',
+      role: 'Co-Founder, Task Workflow SaaS',
+      avatar: 'SA',
+      stars: '★★★★★'
+    },
+    {
+      id: '4',
+      title: 'Dr. L. Chen',
+      tag: 'Dental Portal',
+      description: 'Online booking completion is noticeably higher without our front desk returning missed calls all day. The setup was smooth and straightforward.',
+      role: 'Lead Dentist, Vantage Dental Group',
+      avatar: 'LC',
+      stars: '★★★★★'
+    },
+    {
+      id: '5',
+      title: 'E. Morales',
+      tag: 'Speed & UX',
+      description: 'Mobile page speed is night and day compared to our old WordPress site. Clients actually browse our service menu and book directly on their phones.',
+      role: 'Studio Director, Kestrel Salon & Spa',
+      avatar: 'EM',
+      stars: '★★★★★'
+    },
+    {
+      id: '6',
+      title: 'M. Vance',
+      tag: 'Review Agent',
+      description: 'Automated review requests sent over 50 real 5-star Google ratings without us having to manually chase customers down after every completed job.',
+      role: 'Owner, Oakmoor Repair Services',
+      avatar: 'MV',
+      stars: '★★★★★'
+    }
+  ];
+
   const handleStepHover = (id) => setActiveStep(id);
   const handleStepLeave = () => setActiveStep(null);
 
@@ -67,10 +129,13 @@ export default function HomePage() {
           <div className="hero-copy">
             <div className="eyebrow">Websites · local SEO · AI automation for local business</div>
             <h1>
-              <span className="word">Design.</span>{' '}
-              <span className="word">Build.</span>{' '}
-              <span className="word">Rank.</span>{' '}
-              <span className="word">Automate.</span>
+              <ShinyText
+                text="Design. Build. Rank. Automate."
+                speed={2.5}
+                color="#b5b5b5"
+                shineColor="#ffffff"
+                spread={120}
+              />
             </h1>
 
             <p className="lede">
@@ -149,9 +214,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CORE 3 PILLARS */}
-      <section style={{ padding: '90px 0' }}>
-        <div className="wrap">
+      {/* CORE 3 PILLARS / WHAT WE DO */}
+      <section className="what-we-do-section">
+        <div className="what-we-do-shade" />
+        <div className="wrap" style={{ position: 'relative', zIndex: 2 }}>
           <div className="section-head">
             <div className="eyebrow">What We Do</div>
             <h2>Three specialized capabilities, zero fluff.</h2>
@@ -159,86 +225,107 @@ export default function HomePage() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
-            <div className="port-card">
-              <div>
-                <div className="tag">Service 01</div>
-                <h3>High-Speed Websites</h3>
-                <p>
-                  Hand-coded with Next.js and optimized HTML5. Loads in under 0.8 seconds, wired directly with Google Business Profile &amp; local search signals.
-                </p>
+            <TiltCard
+              className="floating-tilt-card"
+              tiltLimit={14}
+              scale={1.03}
+              perspective={1100}
+              spotlight={true}
+            >
+              <div className="card-content-inner">
+                <div>
+                  <div className="card-header-row">
+                    <div className="card-icon-badge">
+                      <Zap size={22} />
+                    </div>
+                    <span className="card-step-tag">Service 01</span>
+                  </div>
+                  <h3>High-Speed Websites</h3>
+                  <p>
+                    Hand-coded with Next.js and optimized HTML5. Loads in under 0.8 seconds, wired directly with Google Business Profile &amp; local search signals.
+                  </p>
+                  <div className="feature-pills">
+                    <span className="feature-pill">&lt;0.8s Load</span>
+                    <span className="feature-pill">Local SEO</span>
+                    <span className="feature-pill">Mobile-First</span>
+                  </div>
+                </div>
+                <Link href="/websites" className="link-arrow">
+                  Explore Website Engineering &amp; VSL <ArrowRight size={15} />
+                </Link>
               </div>
-              <Link href="/websites" className="link-arrow">
-                Explore Website Engineering &amp; VSL <ArrowRight size={15} />
-              </Link>
-            </div>
+            </TiltCard>
 
-            <div className="port-card">
-              <div>
-                <div className="tag">Service 02</div>
-                <h3>Business Automations &amp; AI Agents</h3>
-                <p>
-                  Deploy Google Reviews agents, automated 60-second quoting bots, lead aggregators, and 24/7 AI voice responders that save 20+ hours weekly.
-                </p>
+            <TiltCard
+              className="floating-tilt-card"
+              tiltLimit={14}
+              scale={1.03}
+              perspective={1100}
+              spotlight={true}
+            >
+              <div className="card-content-inner">
+                <div>
+                  <div className="card-header-row">
+                    <div className="card-icon-badge">
+                      <Bot size={22} />
+                    </div>
+                    <span className="card-step-tag">Service 02</span>
+                  </div>
+                  <h3>Business Automations &amp; AI Agents</h3>
+                  <p>
+                    Deploy Google Reviews agents, automated 60-second quoting bots, lead aggregators, and 24/7 AI voice responders that save 20+ hours weekly.
+                  </p>
+                  <div className="feature-pills">
+                    <span className="feature-pill">60s Quoting Bot</span>
+                    <span className="feature-pill">Review Agents</span>
+                    <span className="feature-pill">24/7 AI Voice</span>
+                  </div>
+                </div>
+                <Link href="/automations" className="link-arrow">
+                  See Our 5 Autonomous Agents <ArrowRight size={15} />
+                </Link>
               </div>
-              <Link href="/automations" className="link-arrow">
-                See Our 5 Autonomous Agents <ArrowRight size={15} />
-              </Link>
-            </div>
+            </TiltCard>
 
-            <div className="port-card">
-              <div>
-                <div className="tag">Service 03</div>
-                <h3>Web Apps, MVPs &amp; Vibe-Code Rescue</h3>
-                <p>
-                  Fullstack SaaS systems like Task Earn Pro. Plus emergency refactoring for &quot;vibe-coded&quot; prototypes (Cursor, v0, Lovable) that are stuck or broken.
-                </p>
+            <TiltCard
+              className="floating-tilt-card"
+              tiltLimit={14}
+              scale={1.03}
+              perspective={1100}
+              spotlight={true}
+            >
+              <div className="card-content-inner">
+                <div>
+                  <div className="card-header-row">
+                    <div className="card-icon-badge">
+                      <Layers size={22} />
+                    </div>
+                    <span className="card-step-tag">Service 03</span>
+                  </div>
+                  <h3>Web Apps, MVPs &amp; Vibe-Code Rescue</h3>
+                  <p>
+                    Fullstack SaaS systems like Task Earn Pro. Plus emergency refactoring for &quot;vibe-coded&quot; prototypes (Cursor, v0, Lovable) that are stuck or broken.
+                  </p>
+                  <div className="feature-pills">
+                    <span className="feature-pill">Next.js &amp; DB</span>
+                    <span className="feature-pill">Task Earn Pro</span>
+                    <span className="feature-pill">Code Rescue</span>
+                  </div>
+                </div>
+                <Link href="/webapps" className="link-arrow">
+                  View SaaS Builds &amp; Code Rescue <ArrowRight size={15} />
+                </Link>
               </div>
-              <Link href="/webapps" className="link-arrow">
-                View SaaS Builds &amp; Code Rescue <ArrowRight size={15} />
-              </Link>
-            </div>
+            </TiltCard>
           </div>
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="process" id="process">
-        <div className="wrap">
-          <div className="section-head">
-            <div className="eyebrow">How a project runs</div>
-            <h2>Five steps, in order: nothing skipped.</h2>
-            <p>Every milestone is transparent, accountable, and designed to generate measurable business results.</p>
-          </div>
+      {/* 3D PROCESS CORRIDOR */}
+      <ProcessReeler />
 
-          <div className="steps-grid">
-            <div className="step-card">
-              <div className="num">01</div>
-              <h3>Design</h3>
-              <p>We map the pages your customers and Google both need, then design around conversion, not template trends.</p>
-            </div>
-            <div className="step-card">
-              <div className="num">02</div>
-              <h3>Build</h3>
-              <p>Hand-coded, mobile-first. No page-builder ceiling, and no slow site losing you same-day local searches.</p>
-            </div>
-            <div className="step-card">
-              <div className="num">03</div>
-              <h3>Rank</h3>
-              <p>Google Business Profile optimized, map-pack signals in place, review flow set up before the site goes live.</p>
-            </div>
-            <div className="step-card">
-              <div className="num">04</div>
-              <h3>Automate</h3>
-              <p>Missed-call text-back, quoting agents, review requests running automatically once you&apos;re live.</p>
-            </div>
-            <div className="step-card">
-              <div className="num">05</div>
-              <h3>Launch &amp; Scale</h3>
-              <p>You get an asset that&apos;s already ranking locally and already automated, not a blank slate with a launch date.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* FOUNDER VSL & BRAND OVERVIEW */}
+      <FounderVSL />
 
       {/* PORTFOLIO / WORK HIGHLIGHTS */}
       <section className="portfolio" id="portfolio">
@@ -303,54 +390,14 @@ export default function HomePage() {
       {/* REVIEWS */}
       <section className="reviews" id="reviews">
         <div className="wrap">
-          <div className="section-head">
-            <div className="eyebrow">Client Feedback</div>
+          <div className="section-head" style={{ textAlign: 'center', margin: '0 auto 48px', maxWidth: '720px' }}>
+            <div className="eyebrow" style={{ justifyContent: 'center' }}>Client Feedback</div>
             <h2>Built for business owners who demand results.</h2>
             <p>Hear from clients whose operations and customer pipelines run on mihilraw code.</p>
           </div>
 
-          <div className="review-grid">
-            <div className="review-card">
-              <div>
-                <div className="stars">★★★★★</div>
-                <p>&quot;They didn&apos;t just hand us a website: Search Console was already reporting impressions in week one, and phone calls increased immediately.&quot;</p>
-              </div>
-              <div className="who">
-                <div className="avatar">RK</div>
-                <div>
-                  <div className="name">R. Kaur</div>
-                  <div className="role">Founder, Apex Auto Care</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="review-card">
-              <div>
-                <div className="stars">★★★★★</div>
-                <p>&quot;The quoting agent alone changed our business. Prospects get an itemized PDF quote in their inbox in 45 seconds while our competitors take 2 days.&quot;</p>
-              </div>
-              <div className="who">
-                <div className="avatar">DM</div>
-                <div>
-                  <div className="name">D. Malik</div>
-                  <div className="role">Operations Director, Horizon HVAC</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="review-card">
-              <div>
-                <div className="stars">★★★★★</div>
-                <p>&quot;Our Cursor-generated prototype was crashing constantly. mihilraw came in, refactored the database, fixed auth, and had us production-ready in 8 days.&quot;</p>
-              </div>
-              <div className="who">
-                <div className="avatar">SA</div>
-                <div>
-                  <div className="name">S. Ahmed</div>
-                  <div className="role">Co-Founder, Task Workflow SaaS</div>
-                </div>
-              </div>
-            </div>
+          <div className="reviews-carousel-wrap">
+            <CircularCarousel items={reviewsData} autoPlay={true} autoPlayInterval={4500} />
           </div>
         </div>
       </section>

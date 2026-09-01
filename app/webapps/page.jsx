@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { 
   ArrowRight, 
   Layers, 
@@ -15,6 +16,7 @@ import {
   AlertTriangle,
   Code2
 } from 'lucide-react';
+import { TiltCard } from '@/components/ui/tilt-card';
 
 export default function WebAppsPage() {
   return (
@@ -93,15 +95,22 @@ export default function WebAppsPage() {
                 </Link>
               </div>
 
-              {/* ARCHITECTURE CARD */}
-              <div style={{
-                background: '#07070a',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--radius)',
-                padding: '30px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '13px'
-              }}>
+              {/* ARCHITECTURE CARD WITH 3D TILT */}
+              <TiltCard
+                className="floating-tilt-card"
+                tiltLimit={10}
+                scale={1.02}
+                perspective={1100}
+                spotlight={true}
+                style={{
+                  background: '#07070a',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius)',
+                  padding: '30px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '13px'
+                }}
+              >
                 <div style={{ color: 'var(--yellow)', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Terminal size={16} /> // TASK EARN PRO STACK
                 </div>
@@ -136,16 +145,16 @@ export default function WebAppsPage() {
                   color: 'var(--yellow)',
                   fontSize: '12px'
                 }}>
-                  ✅ Shipped in 21 days from blank repo to paying users.
+                  Shipped in 21 days from blank repo to paying users.
                 </div>
-              </div>
+              </TiltCard>
             </div>
           </div>
         </div>
       </section>
 
       {/* SPECIAL SERVICE: FIXING VIBE-CODED APPS & WEBSITES */}
-      <section style={{ background: 'rgba(18,18,21,0.5)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '90px 0' }} id="vibe-code">
+      <section style={{ background: 'rgba(18,18,21,0.5)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '90px 0', overflow: 'hidden' }} id="vibe-code">
         <div className="wrap">
           <div className="section-head">
             <div className="eyebrow" style={{ color: '#ff6b6b' }}>Emergency Engineering Service</div>
@@ -155,43 +164,93 @@ export default function WebAppsPage() {
             </p>
           </div>
 
+          {/* 3 RESCUE CAPABILITY CARDS WITH 3D TILT */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '40px' }}>
-            <div style={{ background: 'var(--bg-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '28px' }}>
-              <div style={{ color: '#ff6b6b', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, marginBottom: '12px' }}>
-                <AlertTriangle size={18} /> The &quot;Vibe Coding&quot; Wall
+            <TiltCard
+              className="port-card floating-tilt-card"
+              tiltLimit={12}
+              scale={1.02}
+              perspective={1100}
+              spotlight={true}
+              style={{
+                background: 'var(--bg-2)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius)',
+                padding: '28px'
+              }}
+            >
+              <div>
+                <div style={{ color: '#ff6b6b', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, marginBottom: '12px' }}>
+                  <AlertTriangle size={18} /> The &quot;Vibe Coding&quot; Wall
+                </div>
+                <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
+                  AI code generators are incredible for the first 80%, but catastrophic for the last 20%. They duplicate state, produce phantom API calls, skip edge cases, and leak sensitive environment variables.
+                </p>
               </div>
-              <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: 1.6 }}>
-                AI code generators are incredible for the first 80%, but catastrophic for the last 20%. They duplicate state, produce phantom API calls, skip edge cases, and leak sensitive environment variables.
-              </p>
-            </div>
+            </TiltCard>
 
-            <div style={{ background: 'var(--bg-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '28px' }}>
-              <div style={{ color: 'var(--yellow)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, marginBottom: '12px' }}>
-                <Wrench size={18} /> Our Surgical Refactoring
+            <TiltCard
+              className="port-card floating-tilt-card"
+              tiltLimit={12}
+              scale={1.02}
+              perspective={1100}
+              spotlight={true}
+              style={{
+                background: 'var(--bg-2)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius)',
+                padding: '28px'
+              }}
+            >
+              <div>
+                <div style={{ color: 'var(--yellow)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, marginBottom: '12px' }}>
+                  <Wrench size={18} /> Our Surgical Refactoring
+                </div>
+                <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
+                  We don&apos;t throw away your progress. We inspect your git history, isolate the working UI components, rewrite the brittle backend hooks, normalize your database schema, and seal security holes.
+                </p>
               </div>
-              <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: 1.6 }}>
-                We don&apos;t throw away your progress. We inspect your git history, isolate the working UI components, rewrite the brittle backend hooks, normalize your database schema, and seal security holes.
-              </p>
-            </div>
+            </TiltCard>
 
-            <div style={{ background: 'var(--bg-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '28px' }}>
-              <div style={{ color: 'var(--yellow)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, marginBottom: '12px' }}>
-                <ShieldCheck size={18} /> Production Hardening
+            <TiltCard
+              className="port-card floating-tilt-card"
+              tiltLimit={12}
+              scale={1.02}
+              perspective={1100}
+              spotlight={true}
+              style={{
+                background: 'var(--bg-2)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius)',
+                padding: '28px'
+              }}
+            >
+              <div>
+                <div style={{ color: 'var(--yellow)', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, marginBottom: '12px' }}>
+                  <ShieldCheck size={18} /> Production Hardening
+                </div>
+                <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: 1.6, margin: 0 }}>
+                  Add automated test coverage, proper type safety, secure auth flows, rate limiting, and a clean Git repository your future developers can actually understand and expand.
+                </p>
               </div>
-              <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: 1.6 }}>
-                Add automated test coverage, proper type safety, secure auth flows, rate limiting, and a clean Git repository your future developers can actually understand and expand.
-              </p>
-            </div>
+            </TiltCard>
           </div>
 
-          {/* CODE BEFORE VS AFTER VISUAL */}
+          {/* CODE BEFORE VS AFTER VISUAL (ANIMATED FROM LEFT & RIGHT) */}
           <div className="rescue-grid">
-            <div className="code-box bad">
+            {/* Left Box - Fragile Vibe Coded (Animates from Left) */}
+            <motion.div 
+              className="code-box bad"
+              initial={{ opacity: 0, x: -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            >
               <div className="label" style={{ color: '#ff6b6b' }}>
                 <AlertTriangle size={14} /> FRAGILE VIBE-CODED PROTOTYPE
               </div>
               <pre style={{ margin: 0, overflowX: 'auto' }}>
-{`// ❌ Spaghetti useEffect soup & unauthenticated API
+{`// Spaghetti useEffect soup & unauthenticated API
 useEffect(() => {
   fetch('/api/users/all') // No auth checks!
     .then(r => r.json())
@@ -203,14 +262,21 @@ useEffect(() => {
 // 12 redundant context providers
 // Broken Supabase foreign key relationships`}
               </pre>
-            </div>
+            </motion.div>
 
-            <div className="code-box good">
+            {/* Right Box - Mihilraw Refactored Code (Animates from Right) */}
+            <motion.div 
+              className="code-box good"
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            >
               <div className="label" style={{ color: 'var(--yellow)' }}>
                 <CheckCircle2 size={14} /> MIHILRAW REFACTORED PRODUCTION CODE
               </div>
               <pre style={{ margin: 0, overflowX: 'auto' }}>
-{`// ✅ Next.js Server Action + Supabase RLS Policy
+{`// Next.js Server Action + Supabase RLS Policy
 export async function getVerifiedUserData() {
   const supabase = await createServerClient();
   const { data: { user }, error: authErr } = await supabase.auth.getUser();
@@ -223,7 +289,7 @@ export async function getVerifiedUserData() {
   });
 }`}
               </pre>
-            </div>
+            </motion.div>
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '36px' }}>
@@ -244,23 +310,65 @@ export async function getVerifiedUserData() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
-            <div className="step-card">
-              <div className="num">01</div>
-              <h3>Client Portals &amp; Work Delivery</h3>
-              <p>Branded portals where clients track milestones, upload assets, approve deliverables, and pay invoices without messy email threads.</p>
-            </div>
+            <TiltCard
+              className="step-card floating-tilt-card"
+              tiltLimit={12}
+              scale={1.02}
+              perspective={1100}
+              spotlight={true}
+              style={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div>
+                <div className="num">01</div>
+                <h3>Client Portals &amp; Work Delivery</h3>
+                <p>Branded portals where clients track milestones, upload assets, approve deliverables, and pay invoices without messy email threads.</p>
+              </div>
+            </TiltCard>
 
-            <div className="step-card">
-              <div className="num">02</div>
-              <h3>Inventory &amp; Dispatch Dashboards</h3>
-              <p>Real-time fleet tracking, parts inventory alerts, job assignment algorithms, and barcode/QR scanning directly in the browser.</p>
-            </div>
+            <TiltCard
+              className="step-card floating-tilt-card"
+              tiltLimit={12}
+              scale={1.02}
+              perspective={1100}
+              spotlight={true}
+              style={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div>
+                <div className="num">02</div>
+                <h3>Inventory &amp; Dispatch Dashboards</h3>
+                <p>Real-time fleet tracking, parts inventory alerts, job assignment algorithms, and barcode/QR scanning directly in the browser.</p>
+              </div>
+            </TiltCard>
 
-            <div className="step-card">
-              <div className="num">03</div>
-              <h3>Automated Billing &amp; Invoicing Engines</h3>
-              <p>Self-generating invoices mapped to complex tiered commission rules, multi-party payouts, and real-time reconciliation.</p>
-            </div>
+            <TiltCard
+              className="step-card floating-tilt-card"
+              tiltLimit={12}
+              scale={1.02}
+              perspective={1100}
+              spotlight={true}
+              style={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div>
+                <div className="num">03</div>
+                <h3>Automated Billing &amp; Invoicing Engines</h3>
+                <p>Self-generating invoices mapped to complex tiered commission rules, multi-party payouts, and real-time reconciliation.</p>
+              </div>
+            </TiltCard>
           </div>
         </div>
       </section>

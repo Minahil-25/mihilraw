@@ -13,7 +13,7 @@ export default function PackagesSection() {
       name: 'Local Growth Website',
       badge: 'Core Website',
       tag: 'Hand-Coded Performance',
-      price: '$1,450',
+      price: '$450',
       period: 'one-time build',
       desc: 'Bespoke, hand-coded website designed around how real customers decide to call. Sub-second speed and local SEO wired before launch.',
       features: [
@@ -33,17 +33,17 @@ export default function PackagesSection() {
       name: 'Website + AI Automation Engine',
       badge: 'Most Popular',
       tag: 'Autonomous Operating System',
-      price: '$2,850',
-      period: 'complete setup',
-      desc: 'Our full website build paired with 2 custom autonomous agents (Google Reviews + Quoting Agent) that automatically capture and follow up with leads.',
+      price: '$1,000',
+      period: 'complete bundle',
+      desc: 'Complete growth bundle: $500 for the custom website and $500 for the AI automation bot (Google Reviews or Quoting Agent) that runs on autopilot.',
       features: [
-        'Everything in Local Growth Website',
-        'Google Reviews Agent (SMS/Email post-service review flow)',
-        'Quoting Agent (Auto-generates & sends custom PDF quotes in <60s)',
+        'Everything in Local Growth Website ($500 value)',
+        'AI Automation Bot ($500 value: Google Reviews or Quoting Agent)',
         'Missed-Call Instant Text-Back System',
         'n8n / Webhook CRM Integration (Airtable, HubSpot, Notion)',
         'Leads Collecting Agent with duplicate scrubbing',
-        'Full 30-day workflow fine-tuning and uptime monitoring'
+        'Full 30-day workflow fine-tuning and uptime monitoring',
+        'Direct Ownership with Zero Monthly Platform Markups'
       ],
       ctaText: 'Deploy Growth Engine',
       featured: true
@@ -53,8 +53,8 @@ export default function PackagesSection() {
       name: 'Custom Web App / MVP / Code Rescue',
       badge: 'Engineering Tier',
       tag: 'Fullstack Systems & SaaS',
-      price: '$4,200',
-      period: 'starting scope',
+      price: 'Custom',
+      period: '',
       desc: 'Fullstack application development for SaaS MVPs (like Task Earn Pro), internal dashboards, or rescuing broken "vibe-coded" prototypes into production.',
       features: [
         'Fullstack Next.js / Supabase / PostgreSQL Architecture',
@@ -65,7 +65,7 @@ export default function PackagesSection() {
         'Stripe Payments & Webhook Subscription Handling',
         'Deployment Pipeline & Production Scalability Hardening'
       ],
-      ctaText: 'Build Custom System',
+      ctaText: 'Customize your offer',
       featured: false
     }
   ];
@@ -97,7 +97,7 @@ export default function PackagesSection() {
 
               <div className="pkg-price">
                 {pkg.price}
-                <span className="term">/ {pkg.period}</span>
+                {pkg.period ? <span className="term">/ {pkg.period}</span> : null}
               </div>
 
               <ul className="package-features">
