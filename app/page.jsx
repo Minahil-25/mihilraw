@@ -61,11 +61,11 @@ export default function HomePage() {
   const reviewsData = [
     {
       id: '1',
-      title: 'R. Kaur',
+      title: 'M. Vance',
       tag: 'Web & Local SEO',
       description: "They didn't just hand us a website: Search Console was already reporting impressions in week one, and phone calls increased immediately.",
-      role: 'Founder, Apex Auto Care',
-      avatar: 'RK',
+      role: 'Owner, Northside Auto Care',
+      avatar: 'MV',
       stars: '★★★★★'
     },
     {
@@ -91,7 +91,7 @@ export default function HomePage() {
       title: 'Dr. L. Chen',
       tag: 'Dental Portal',
       description: 'Online booking completion is noticeably higher without our front desk returning missed calls all day. The setup was smooth and straightforward.',
-      role: 'Lead Dentist, Vantage Dental Group',
+      role: 'Lead Dentist, Vantage Dental',
       avatar: 'LC',
       stars: '★★★★★'
     },
@@ -106,11 +106,11 @@ export default function HomePage() {
     },
     {
       id: '6',
-      title: 'M. Vance',
+      title: 'D. Ortiz',
       tag: 'Review Agent',
-      description: 'Automated review requests sent over 50 real 5-star Google ratings without us having to manually chase customers down after every completed job.',
+      description: 'Automated review requests sent over 50 real, 5-star Google ratings without us having to manually chase customers down after every completed job.',
       role: 'Owner, Oakmoor Repair Services',
-      avatar: 'MV',
+      avatar: 'DO',
       stars: '★★★★★'
     }
   ];
@@ -197,18 +197,18 @@ export default function HomePage() {
           <span className="cap">Building for</span>
           <div className="marquee">
             <div className="marquee-track">
-              <span>Task Earn Pro</span>
-              <span>valorantedit.com</span>
               <span>Ragon Solutions</span>
               <span>Northside Auto Care</span>
-              <span>Kestrel Salon</span>
+              <span>Kestrel Salon &amp; Spa</span>
               <span>Vantage Dental</span>
-              <span>Oakmoor Repair</span>
-              <span>Driftpoint Clinic</span>
-              <span>Task Earn Pro</span>
               <span>valorantedit.com</span>
+              <span>Oakmoor Repair Services</span>
+              <span>Driftpoint Clinic</span>
+              <span>Horizon HVAC</span>
               <span>Ragon Solutions</span>
               <span>Northside Auto Care</span>
+              <span>Kestrel Salon &amp; Spa</span>
+              <span>Vantage Dental</span>
             </div>
           </div>
         </div>

@@ -35,10 +35,10 @@ export default function PackagesSection() {
       tag: 'Autonomous Operating System',
       price: '$1,000',
       period: 'complete bundle',
-      desc: 'Complete growth bundle: $500 for the custom website and $500 for the AI automation bot (Google Reviews or Quoting Agent) that runs on autopilot.',
+      desc: 'Complete growth bundle: $450 for the custom website and $550 for the AI automation bot (Google Reviews or Quoting Agent) that runs on autopilot.',
       features: [
-        'Everything in Local Growth Website ($500 value)',
-        'AI Automation Bot ($500 value: Google Reviews or Quoting Agent)',
+        'Everything in Local Growth Website ($450 value)',
+        'AI Automation Bot ($550 value: Google Reviews or Quoting Agent)',
         'Missed-Call Instant Text-Back System',
         'n8n / Webhook CRM Integration (Airtable, HubSpot, Notion)',
         'Leads Collecting Agent with duplicate scrubbing',

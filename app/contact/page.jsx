@@ -353,9 +353,59 @@ function ContactForm() {
   );
 }
 
+function ContactStaticFallback() {
+  return (
+    <div style={{ padding: '70px 0 100px' }}>
+      <div className="wrap">
+        <div className="section-head" style={{ maxWidth: '780px' }}>
+          <div className="eyebrow">Start A Build</div>
+          <h1 style={{ fontSize: 'clamp(38px, 5vw, 56px)', fontWeight: 800, lineHeight: 1.1, marginBottom: '20px' }}>
+            Tell us about your project. We respond in <span style={{ color: 'var(--yellow)' }}>under 2 hours</span>.
+          </h1>
+          <p style={{ fontSize: '17px', color: 'var(--text-dim)' }}>
+            No sales reps, no endless discovery committees. You will talk directly to the engineers building your website, automation, or application.
+          </p>
+        </div>
+
+        <div className="contact-grid">
+          <div className="form-panel">
+            <h3 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '16px' }}>Direct Project Inquiry</h3>
+            <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: 1.6, marginBottom: '24px' }}>
+              To get started immediately, email your project requirements, current website link, or target timeline directly to our engineering desk:
+            </p>
+            <a 
+              href="mailto:hello@mihilraw.com?subject=New%20Project%20Inquiry%20-%20mihilraw" 
+              className="btn btn-primary btn-lg"
+              style={{ display: 'inline-flex', width: '100%', justifyContent: 'center', marginBottom: '20px' }}
+            >
+              Email hello@mihilraw.com <ArrowRight size={16} />
+            </a>
+            <div style={{ background: '#0a0a0c', border: '1px solid var(--border)', borderRadius: '8px', padding: '16px', fontSize: '13px', color: 'var(--text-dim)' }}>
+              <div>⚡ Response Time: <strong style={{ color: 'var(--yellow)' }}>&lt; 2 Hours</strong></div>
+              <div style={{ marginTop: '6px' }}>🔒 Direct Engineer Access: <strong style={{ color: '#fff' }}>hello@mihilraw.com</strong></div>
+            </div>
+          </div>
+
+          <div>
+            <div style={{ background: 'var(--bg-2)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: '36px' }}>
+              <div className="eyebrow" style={{ marginBottom: '14px' }}>Direct Communication</div>
+              <h3 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '18px' }}>Fast, straightforward collaboration.</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '14px', color: 'var(--text-dim)' }}>
+                <div>✓ Inquiries answered in under 2 hours</div>
+                <div>✓ 100% Client Code Ownership &amp; NDA protection</div>
+                <div>✓ 30-Day Post-Launch Warranty on all builds</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ContactPage() {
   return (
-    <Suspense fallback={<div className="wrap" style={{ padding: '100px 0', textAlign: 'center' }}>Loading contact configurator...</div>}>
+    <Suspense fallback={<ContactStaticFallback />}>
       <ContactForm />
     </Suspense>
   );

@@ -49,8 +49,8 @@ const processSteps = [
     icon: Zap,
     color: '#3b82f6',
     metrics: [
-      { label: 'PageSpeed Score', val: '100/100' },
-      { label: 'Load Time', val: '0.64s' }
+      { label: 'Core Web Vitals', val: '95+ Guaranteed' },
+      { label: 'Load Time', val: '< 0.8s' }
     ],
     features: ['Semantic HTML5', 'Next.js 16 App Router', 'Zero Bloat'],
     cardMedia: {

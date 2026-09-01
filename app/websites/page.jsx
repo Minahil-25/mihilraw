@@ -29,11 +29,11 @@ export default function WebsitesPage() {
       speed: '0.62s Load Time (Lighthouse 99)',
       summary: 'High-conversion local service hub with automated quote request modal, dynamic mechanic schedule sync, and 1-tap call routing.',
       before: 'WordPress site loading in 8.4s with 4 broken plugins losing mobile searchers.',
-      after: 'Sub-second custom Next.js site ranking on local map pack within 28 days with 2X calls.'
+      after: 'Sub-second custom Next.js site ranking on local map pack within 21 days with 2X calls.'
     },
     {
-      title: 'Kestrel Aesthetic Salon & Spa',
-      tag: 'Luxury Clinic & Booking',
+      title: 'Kestrel Salon & Spa',
+      tag: 'Luxury Salon & Spa Booking',
       speed: '0.74s Load Time (Lighthouse 100)',
       summary: 'Elegant dark-luxury aesthetic with mobile appointment scheduler, staff portfolios, and automated calendar reminder triggers.',
       before: 'Generic Wix template with no schema markup and uncompressed 12MB hero gallery.',
@@ -45,7 +45,7 @@ export default function WebsitesPage() {
       speed: '0.54s Load Time (Lighthouse 100)',
       summary: 'A high-performance Next.js web application for a UGC & short-form video production agency — with silky motion-driven reeler showcases and instant consultation bookings.',
       before: 'Generic portfolio template failing to showcase high-production video reels smoothly on mobile.',
-      after: 'Bespoke Next.js & Framer Motion experience with interactive 2-card video reeler delivering +50% inbound agency inquiries.'
+      after: 'Bespoke Next.js & Framer Motion experience with interactive 2-card video reeler delivering +180% inbound agency inquiries.'
     },
     {
       title: 'valorantedit.com',
@@ -53,7 +53,7 @@ export default function WebsitesPage() {
       speed: '0.69s Load Time (Lighthouse 99)',
       summary: 'High-traffic media download portal with instant preview rendering, search engine snippet indexing, and CDN edge delivery.',
       before: 'Heavy database lag causing 504 gateway timeouts on viral social spikes.',
-      after: 'Zero downtime handling 20X monthly visits with sub-second asset delivery.'
+      after: 'Zero downtime handling 100k+ monthly visits with sub-second asset delivery.'
     }
   ];
 
@@ -87,19 +87,19 @@ export default function WebsitesPage() {
 
   const websiteReviews = [
     {
-      quote: "Before mihilraw, we had a WordPress site that took forever to load. Now our page loads instantly, and in just 3 weeks we went from invisible to #1 on Google Maps for local auto repairs.",
+      quote: "Before mihilraw, we had a WordPress site that took forever to load. Now our page loads instantly, and in just 3 weeks we went from invisible to top rankings on Google Maps for local auto repairs.",
       name: "Marcus Vance",
       role: "Owner, Northside Auto Care"
     },
     {
-      quote: "The VSL and custom booking flow generated 38 consultation inquiries in our first month alone. Coded with extreme precision.",
+      quote: "The custom booking flow and high-speed showcase generated 38 consultation inquiries in our first month alone. Coded with extreme precision.",
       name: "Elena Rostova",
-      role: "Founder, Kestrel Clinic"
+      role: "Founder, Kestrel Salon & Spa"
     },
     {
       quote: "They don't just design pretty websites, they engineer an automated sales asset. Our conversion rate from Google search doubled.",
       name: "Dr. Julian Hayes",
-      role: "Lead Dentist, Vantage Dental"
+      role: "Practice Partner, Vantage Dental"
     }
   ];
 

@@ -400,12 +400,12 @@ export default function AutomationsPage() {
             padding: '50px',
             textAlign: 'center'
           }}>
-            <div className="eyebrow" style={{ justifyContent: 'center' }}>Start In 72 Hours</div>
+            <div className="eyebrow" style={{ justifyContent: 'center' }}>72-Hour Audit Kickoff</div>
             <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', marginBottom: '16px' }}>
               Free up your team to do the work that actually generates profit.
             </h2>
             <p style={{ maxWidth: '600px', margin: '0 auto 30px', color: 'var(--text-dim)' }}>
-              Schedule a 20-minute automation audit. We will map your manual tasks and show you the exact agents that deliver the highest ROI first.
+              Schedule a 20-minute automation audit call within 72 hours. We will map your manual bottlenecks and deploy custom agents to your stack in 3–5 days.
             </p>
             <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/contact?service=automation" className="btn btn-primary btn-lg">
