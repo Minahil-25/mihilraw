@@ -4,8 +4,6 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { 
   Sparkles, 
-  Volume2, 
-  VolumeX, 
   ArrowRight, 
   CheckCircle2, 
   Zap, 
@@ -126,7 +124,6 @@ const processSteps = [
 
 export default function ProcessReeler() {
   const containerRef = useRef(null);
-  const [activeAudioIndex, setActiveAudioIndex] = useState(null);
   const [windowWidth, setWindowWidth] = useState(1200);
 
   useEffect(() => {
@@ -162,12 +159,7 @@ export default function ProcessReeler() {
     [initialOffset, finalOffset]
   );
 
-  const toggleAudio = (idx, e) => {
-    e.stopPropagation();
-    setActiveAudioIndex(activeAudioIndex === idx ? null : idx);
-  };
-
-  return (
+    return (
     <section 
       ref={containerRef} 
       className="process-reeler-scroll-section"
@@ -237,7 +229,6 @@ export default function ProcessReeler() {
           >
             {processSteps.map((step, idx) => {
               const IconComp = step.icon;
-              const isPlaying = activeAudioIndex === idx;
 
               return (
                 <div
@@ -285,60 +276,26 @@ export default function ProcessReeler() {
                       style={{ 
                         display: 'flex', 
                         alignItems: 'center', 
-                        justifyContent: 'space-between',
+                        justifyContent: 'flex-start',
                         zIndex: 20,
                         marginBottom: '10px'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span 
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.08)',
-                            border: '1px solid rgba(255, 255, 255, 0.12)',
-                            borderRadius: '100px',
-                            padding: '3px 10px',
-                            fontSize: '10.5px',
-                            fontFamily: 'var(--font-mono)',
-                            fontWeight: 700,
-                            color: '#fff',
-                            letterSpacing: '0.05em'
-                          }}
-                        >
-                          STEP {step.num}
-                        </span>
-                        <span 
-                          style={{
-                            color: 'var(--yellow)',
-                            fontSize: '10.5px',
-                            fontFamily: 'var(--font-mono)',
-                            letterSpacing: '0.08em',
-                            fontWeight: 600
-                          }}
-                        >
-                          {step.phase}
-                        </span>
-                      </div>
-
-                      {/* Sound/Interactive Toggle Pill */}
-                      <button
-                        onClick={(e) => toggleAudio(idx, e)}
-                        aria-label="Toggle card insight"
+                      <span 
                         style={{
-                          width: '32px',
-                          height: '32px',
-                          borderRadius: '50%',
-                          background: isPlaying ? 'var(--yellow)' : 'rgba(255, 255, 255, 0.08)',
-                          border: '1px solid rgba(255, 255, 255, 0.15)',
-                          color: isPlaying ? '#000' : '#fff',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease'
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(255, 255, 255, 0.12)',
+                          borderRadius: '100px',
+                          padding: '3px 10px',
+                          fontSize: '10.5px',
+                          fontFamily: 'var(--font-mono)',
+                          fontWeight: 700,
+                          color: '#fff',
+                          letterSpacing: '0.05em'
                         }}
                       >
-                        {isPlaying ? <Volume2 size={14} /> : <VolumeX size={14} />}
-                      </button>
+                        STEP {step.num}
+                      </span>
                     </div>
 
                     {/* Middle Visual Stage Box */}
@@ -370,7 +327,7 @@ export default function ProcessReeler() {
                       />
 
                       {/* Top Visual Pill */}
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 5 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', zIndex: 5 }}>
                         <div 
                           style={{
                             display: 'flex',
@@ -388,23 +345,6 @@ export default function ProcessReeler() {
                         >
                           <IconComp size={12} />
                           <span>{step.cardMedia.badge}</span>
-                        </div>
-
-                        <div 
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '4px',
-                            fontSize: '9.5px',
-                            fontFamily: 'var(--font-mono)',
-                            color: '#9a9a9f',
-                            background: 'rgba(0, 0, 0, 0.6)',
-                            padding: '2px 6px',
-                            borderRadius: '5px'
-                          }}
-                        >
-                          <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
-                          ACTIVE
                         </div>
                       </div>
 
