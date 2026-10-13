@@ -17,6 +17,7 @@ import {
   Cpu,
   ChevronRight
 } from 'lucide-react';
+import AgentShowcase from '@/components/AgentShowcase';
 
 export default function AutomationsPage() {
   const [activeTab, setActiveTab] = useState('google-reviews');
@@ -25,85 +26,47 @@ export default function AutomationsPage() {
     {
       id: 'google-reviews',
       title: 'Google Reviews Agent',
-      badge: 'Reputation & Map Pack',
+      badge: 'Reputation & Booking Engine',
       icon: Star,
-      headline: 'Autonomously turn 5-star customer experiences into Google reviews on autopilot.',
-      desc: 'Connects directly to your CRM, POS, or job completion trigger. Automatically sends a personalized SMS/WhatsApp to the client with smart sentiment routing.',
-      metrics: '3.8x More 5-Star Reviews · Catches 100% of negative reviews before public posting',
-      howItWorks: [
-        'Triggers when a job/service is marked completed in your system.',
-        'Sends a non-pushy friendly SMS asking: "How was your experience with us today?"',
-        'If score is 4 or 5: Instantly directs them to your Google Business Profile with a 1-tap review link.',
-        'If score is 1 to 3: Diverts them to a private owner feedback form so you can resolve it before it harms your public rating.',
-        'AI automatically crafts and drafts thoughtful, keyword-rich owner responses for your approval.'
-      ],
-      diagram: 'Job Completed → SMS Trigger → Sentiment Filter → [Google Map Review OR Private Resolution Form]'
+      headline: 'Autonomously turn 5-star customer experiences into Google reviews & booked appointments.',
+      desc: 'Informs customers of your availability, enables automated calendar booking, and routes happy clients directly to your Google Business Profile with a 1-tap review link.',
+      metrics: '3.8x More 5-Star Reviews · Catches 100% of negative reviews before public posting'
+    },
+    {
+      id: 'chat-support',
+      title: 'Chat Support Agent',
+      badge: '24/7 Live Concierge',
+      icon: Bot,
+      headline: '24/7 autonomous chatbot that answers inquiries, qualifies leads, and syncs to your CRM.',
+      desc: 'Embeds directly onto your website. Answers complex service questions using your custom knowledge base, captures verified contact details, and notifies your team in real time.',
+      metrics: '<1s Response Time · 92% Autonomous Resolution · 24/7/365 Coverage'
     },
     {
       id: 'quoting',
-      title: 'Quoting Agent (60s Estimates)',
+      title: 'Quoting Agent',
       badge: 'Revenue Velocity',
       icon: FileText,
       headline: 'Extract job specs from emails or forms and deliver a polished branded PDF quote in under 60 seconds.',
       desc: 'Speed to lead is everything. While your competitors take 2 days to draft an estimate, your AI Quoting Agent validates measurements, calculates labor and materials, and emails an itemized PDF quote instantly.',
-      metrics: 'Average turnaround 42 seconds · 68% higher close rate than slow quotes',
-      howItWorks: [
-        'Ingests incoming inquiry from web form, email, or WhatsApp.',
-        'Extracts customer dimensions, square footage, vehicle make, or service requirements.',
-        'Runs dynamic pricing calculation based on your exact rates, materials, and profit margins.',
-        'Compiles a crisp, branded PDF quote with terms, breakdown, and 1-click digital deposit link.',
-        'Logs the quote in your CRM and notifies your team with a Slack/WhatsApp alert.'
-      ],
-      diagram: 'Web Lead/Email → AI Spec Parser → Rate Matrix → PDF Generator → Instant Email Delivery'
+      metrics: 'Average turnaround 42 seconds · 68% higher close rate than slow quotes'
     },
     {
-      id: 'agent-loop',
-      title: 'Agent-in-the-Loop Safeguard',
-      badge: 'Human + AI Supervision',
-      icon: UserCheck,
-      headline: 'Autonomous power with complete human control. The AI drafts; you approve with 1 tap.',
-      desc: 'For high-ticket transactions or sensitive communications, fully autonomous bots can be risky. Agent-in-the-Loop performs 95% of the heavy lifting (research, drafting, math) and presents a 1-click approve button on Slack or WhatsApp.',
-      metrics: 'Zero hallucination risk · Cuts human administrative time by 85%',
-      howItWorks: [
-        'AI processes inbound customer requests, drafts responses, or prepares custom contracts.',
-        'Pings the business owner or ops manager with an interactive Slack/WhatsApp button: [Approve & Send] | [Edit Draft] | [Reject].',
-        'Upon 1-tap approval, the agent immediately executes the action across external APIs.',
-        'Learns owner tone and preferences over time for seamless alignment.'
-      ],
-      diagram: 'Complex Task → AI Research & Draft → Slack/WhatsApp 1-Tap Prompt → Instant Execution'
-    },
-    {
-      id: 'lead-collector',
-      title: 'Leads Collecting & Hygiene Agent',
-      badge: 'Data Pipeline',
+      id: 'lead-generating',
+      title: 'Lead Generating Agent',
+      badge: 'Pipeline Ingestion',
       icon: Filter,
-      headline: 'Ingest leads from Meta, Google Ads, directories, and web forms into one clean pipeline.',
+      headline: 'Scrape, verify, and enrich high-intent local business leads on complete autopilot.',
       desc: 'Stops leads from slipping through the cracks. Ingests leads instantly from every marketing channel, validates emails and phone numbers, scrubs duplicates, and pushes them straight into your operational CRM.',
-      metrics: 'Instant webhook intake (&lt; 2 seconds) · 100% duplicate elimination',
-      howItWorks: [
-        'Monitors incoming webhooks from Meta Ads, Google Ads, website forms, and partner directories.',
-        'Performs carrier and HLR phone lookup to verify live mobile lines vs landlines.',
-        'Enriches data with company information, social links, and geographical radius.',
-        'Pushes cleanly formatted records directly into Airtable, HubSpot, GoHighLevel, or Google Sheets.'
-      ],
-      diagram: 'Multi-Channel Ingestion → Live Phone/Email Validation → CRM Deduplication → Auto-Assign'
+      metrics: 'Instant webhook intake (< 2 seconds) · 100% duplicate elimination'
     },
     {
       id: 'voice-agent',
-      title: 'AI Voice Agents (24/7 Phone Answering)',
+      title: 'Voice Agent',
       badge: 'Telephony AI',
       icon: PhoneCall,
-      headline: 'Never lose a high-value customer to voicemail during busy hours or after-hours.',
-      desc: 'Natural sounding, conversational AI voice agents that pick up when you are unavailable, answer common service questions, qualify urgency, and book appointments right on your calendar.',
-      metrics: 'Sub-600ms conversational latency · 24/7/365 availability · Zero missed calls',
-      howItWorks: [
-        'Answers inbound missed calls within 2 rings with a warm, natural human-like voice.',
-        'Answers questions on pricing, turnaround times, and service areas based on your custom knowledge base.',
-        'Gathers customer details, address, and problem description.',
-        'Books a confirmed inspection or appointment directly into your Google Calendar or CRM.',
-        'Sends you an instant audio recording and executive transcript of the call.'
-      ],
-      diagram: 'Inbound Call → Twilio/Voice Engine → Live AI Conversation → Calendar Booking & SMS'
+      headline: 'Natural conversational AI phone answering that qualifies callers and books calendar slots 24/7.',
+      desc: 'Never lose a high-value customer to voicemail during busy hours or after-hours. Sub-600ms conversational latency telephony AI answers questions, quotes ballparks, and books appointments right on your calendar.',
+      metrics: 'Sub-600ms conversational latency · 24/7/365 availability · Zero missed calls'
     }
   ];
 
@@ -137,146 +100,17 @@ export default function AutomationsPage() {
       {/* INTERACTIVE AGENT SHOWCASE / SIMULATOR */}
       <section style={{ padding: '40px 0 90px' }} id="interactive-demo">
         <div className="wrap">
-          <div style={{
-            background: 'var(--bg-2)',
-            border: '1px solid var(--border-hi)',
-            borderRadius: 'var(--radius-lg)',
-            overflow: 'hidden',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.6)'
-          }}>
-            {/* AGENT TABS */}
-            <div style={{
-              display: 'flex',
-              overflowX: 'auto',
-              borderBottom: '1px solid var(--border)',
-              background: '#0d0d10'
-            }}>
-              {agents.map((agent) => {
-                const IconComponent = agent.icon;
-                const isActive = activeTab === agent.id;
-                return (
-                  <button
-                    key={agent.id}
-                    onClick={() => setActiveTab(agent.id)}
-                    style={{
-                      padding: '18px 24px',
-                      background: isActive ? 'rgba(245, 197, 24, 0.08)' : 'transparent',
-                      border: 'none',
-                      borderBottom: isActive ? '2px solid var(--yellow)' : '2px solid transparent',
-                      color: isActive ? 'var(--yellow)' : 'var(--text-dim)',
-                      fontFamily: 'var(--font-display)',
-                      fontWeight: 700,
-                      fontSize: '14px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      whiteSpace: 'nowrap',
-                      transition: 'all 0.2s'
-                    }}
-                  >
-                    <IconComponent size={17} />
-                    {agent.title}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* TAB CONTENT */}
-            <div style={{ padding: '40px 36px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '40px', alignItems: 'center' }}>
-                <div>
-                  <div className="badge" style={{ marginBottom: '14px' }}>{currentAgent.badge}</div>
-                  <h3 style={{ fontSize: '26px', fontWeight: 800, marginBottom: '16px' }}>
-                    {currentAgent.headline}
-                  </h3>
-                  <p style={{ color: 'var(--text-dim)', fontSize: '15px', lineHeight: 1.6, marginBottom: '24px' }}>
-                    {currentAgent.desc}
-                  </p>
-
-                  <div style={{
-                    background: 'rgba(245, 197, 24, 0.05)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '8px',
-                    padding: '14px 18px',
-                    marginBottom: '26px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '13px',
-                    color: 'var(--yellow)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px'
-                  }}>
-                    <Zap size={16} /> <strong>Performance Metric:</strong> {currentAgent.metrics}
-                  </div>
-
-                  <h4 style={{ fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--text-dimmer)', marginBottom: '14px', fontFamily: 'var(--font-mono)' }}>
-                    Execution Sequence:
-                  </h4>
-                  <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px' }}>
-                    {currentAgent.howItWorks.map((step, idx) => (
-                      <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                        <CheckCircle2 size={16} style={{ color: 'var(--yellow)', flexShrink: 0, marginTop: '2px' }} />
-                        <span style={{ color: 'var(--text)' }}>{step}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* VISUAL DIAGRAM / CODE PREVIEW */}
-                <div style={{
-                  background: '#070709',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius)',
-                  padding: '28px',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '13px'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '12px' }}>
-                    <span style={{ color: 'var(--text-dim)', fontSize: '12px' }}>// ARCHITECTURE RUNTIME</span>
-                    <span style={{ color: 'var(--yellow)', fontSize: '11px' }}>● LIVE WEBHOOK PIPELINE</span>
-                  </div>
-
-                  <div style={{ color: 'var(--text-dimmer)', marginBottom: '12px' }}>/* Logic flow */</div>
-                  <div style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid var(--border-subtle)',
-                    padding: '16px',
-                    borderRadius: '8px',
-                    color: 'var(--yellow)',
-                    lineHeight: 1.6,
-                    marginBottom: '20px'
-                  }}>
-                    {currentAgent.diagram}
-                  </div>
-
-                  <div style={{ color: 'var(--text-dimmer)', marginBottom: '10px' }}>/* Tech Components */</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
-                    {['n8n Workflow Engine', 'OpenAI / Claude API', 'Twilio SMS & Voice', 'Airtable / PostgreSQL', 'Webhooks'].map((t) => (
-                      <span key={t} style={{
-                        background: 'rgba(255,255,255,0.05)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        padding: '4px 10px',
-                        borderRadius: '4px',
-                        fontSize: '11px',
-                        color: 'var(--text)'
-                      }}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <Link
-                    href={`/contact?service=automation&agent=${encodeURIComponent(currentAgent.title)}`}
-                    className="btn btn-primary"
-                    style={{ width: '100%', justifyContent: 'center' }}
-                  >
-                    Deploy {currentAgent.title} <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </div>
-            </div>
+          <div style={{ maxWidth: '1000px', margin: '0 auto 36px', textAlign: 'center' }}>
+            <div className="badge" style={{ marginBottom: '12px' }}>Interactive Agent Console</div>
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 800, marginBottom: '14px' }}>
+              Experience Our Autonomous Agents Live
+            </h2>
+            <p style={{ color: 'var(--text-dim)', fontSize: '16px', maxWidth: '640px', margin: '0 auto' }}>
+              Watch live screen recordings and workflow demos. Switch between agents to see instant execution streams.
+            </p>
           </div>
+
+          <AgentShowcase activeTab={activeTab} onTabChange={setActiveTab} />
         </div>
       </section>
 

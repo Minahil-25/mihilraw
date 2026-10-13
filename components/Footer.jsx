@@ -1,5 +1,42 @@
+'use client';
+
 import Link from 'next/link';
-import { ArrowRight, Mail, Clock, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
+
+const socialLinks = [
+  {
+    name: 'Instagram',
+    href: '#', // Replace with your Instagram link later
+    icon: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+      </svg>
+    )
+  },
+  {
+    name: 'LinkedIn',
+    href: '#', // Replace with your LinkedIn link later
+    icon: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect width="4" height="12" x="2" y="9"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+    )
+  },
+  {
+    name: 'YouTube',
+    href: '#', // Replace with your YouTube link later
+    icon: (
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+        <polygon points="10 15 15 12 10 9 10 15" fill="currentColor"/>
+      </svg>
+    )
+  }
+];
 
 export default function Footer() {
   return (
@@ -28,8 +65,25 @@ export default function Footer() {
             <p style={{ color: 'var(--text-dim)', fontSize: '14px', maxWidth: '280px', marginTop: '12px' }}>
               Deep-tier digital engineering for businesses that refuse to settle for slow templates and manual tasks.
             </p>
-            <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--yellow)', fontSize: '13px', fontFamily: 'var(--font-mono)' }}>
+            
+            <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--yellow)', fontSize: '13px', fontFamily: 'var(--font-mono)' }}>
               <Clock size={14} /> Quick response within 2 hours
+            </div>
+
+            {/* Social Icons */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '20px' }}>
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="foot-social-link"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -68,7 +122,7 @@ export default function Footer() {
         </div>
 
         <div className="bottom">
-          <span>© {new Date().getFullYear()} mihilraw. Hand-coded without bloated builders.</span>
+          <span>&copy; {new Date().getFullYear()} mihilraw. Hand-coded without bloated builders.</span>
           <div style={{ display: 'flex', gap: '20px' }}>
             <Link href="/contact">Inquire</Link>
             <a href="#">Privacy</a>
